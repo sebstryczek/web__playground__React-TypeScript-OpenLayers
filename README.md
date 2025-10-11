@@ -1,1 +1,0 @@
-# sebstryczek-web__playground__React-TypeScript-OpenLayers
