@@ -1,10 +1,12 @@
 import React from "react";
-import { MapComponent } from "./map";
+import { MapProvider, MapComponent } from "./map/react";
 
 const App: React.FC = () => {
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <MapComponent />
+      <MapProvider>
+        <MapComponent />
+      </MapProvider>
     </div>
   );
 };

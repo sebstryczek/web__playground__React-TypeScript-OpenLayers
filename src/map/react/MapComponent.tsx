@@ -1,41 +1,26 @@
-import React, { useEffect, useRef } from "react";
-import Map from "ol/Map";
-import View from "ol/View";
-import TileLayer from "ol/layer/Tile";
-import OSM from "ol/source/OSM";
-import { fromLonLat } from "ol/proj";
+import React from "react";
+
 import "ol/ol.css";
 
+import { useMapInitializer } from "./useMapInitializer";
+
 const MapComponent: React.FC = () => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<Map | null>(null);
+  const { initializeMap, disposeMap } = useMapInitializer();
+  const ref = React.useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (!mapRef.current) return;
-
-    const map = new Map({
-      target: mapRef.current,
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-      ],
-      view: new View({
-        center: fromLonLat([19.5, 52.0]),
-        zoom: 6,
-      }),
-    });
-
-    mapInstanceRef.current = map;
+  React.useEffect(() => {
+    if (ref.current) {
+      initializeMap(ref.current);
+    }
 
     return () => {
-      map.setTarget(undefined);
+      disposeMap();
     };
-  }, []);
+  }, [initializeMap, disposeMap]);
 
   return (
     <div
-      ref={mapRef}
+      ref={ref}
       style={{
         width: "100%",
         height: "100%",

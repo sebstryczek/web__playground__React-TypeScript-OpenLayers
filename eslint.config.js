@@ -24,6 +24,7 @@ export default defineConfig([
     },
 
     rules: {
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
       "prettier/prettier": ["error", { trailingComma: "es5" }],
     },
   },
