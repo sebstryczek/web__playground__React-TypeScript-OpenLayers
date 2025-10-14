@@ -1,3 +1,3 @@
-export { MapProvider } from "./MapContext";
-export { MapComponent } from "./MapComponent";
-export { useMap } from "./useMap";
+export { MapProvider } from "./context/MapContext";
+export { MapComponent } from "./components/MapComponent";
+export { useMap } from "./hooks/useMap";

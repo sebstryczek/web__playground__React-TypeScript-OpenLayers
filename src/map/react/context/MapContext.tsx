@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useMemo, useRef } from "react";
 import { Map as OLMap } from "ol";
-import { createMap } from "../core/createMap";
+import { createMap } from "../../core/createMap";
 
 type MapApi = {
   getMap: () => OLMap;

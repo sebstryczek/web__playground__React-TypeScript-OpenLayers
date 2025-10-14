@@ -1,8 +1,5 @@
 import React from "react";
-
-import "ol/ol.css";
-
-import { useMapInitializer } from "./useMapInitializer";
+import { useMapInitializer } from "../hooks/useMapInitializer";
 
 const MapComponent: React.FC = () => {
   const { initializeMap, disposeMap } = useMapInitializer();
