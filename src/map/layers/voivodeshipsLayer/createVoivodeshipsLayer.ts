@@ -5,7 +5,7 @@ import VectorSource from "ol/source/Vector";
 import { LAYERS } from "@/map/core/constants";
 import { createStyles } from "./createStyles";
 
-const VOIVODESHIPS_GEOJSON_URL = "/wojewodztwa.geojson";
+const VOIVODESHIPS_GEOJSON_URL = `${import.meta.env.BASE_URL}wojewodztwa.geojson`;
 
 function createVoivodeshipsLayer() {
   const source = new VectorSource({

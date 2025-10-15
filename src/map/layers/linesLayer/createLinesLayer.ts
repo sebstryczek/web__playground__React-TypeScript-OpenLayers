@@ -5,7 +5,7 @@ import Style from "ol/style/Style";
 import Stroke from "ol/style/Stroke";
 import { LAYERS } from "@/map/core/constants";
 
-const LINES_GEOJSON_URL = "/linie.geojson";
+const LINES_GEOJSON_URL = `${import.meta.env.BASE_URL}linie.geojson`;
 
 function createLinesLayer() {
   const source = new VectorSource({
