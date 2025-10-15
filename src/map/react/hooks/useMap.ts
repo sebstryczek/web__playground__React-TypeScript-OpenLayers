@@ -8,9 +8,9 @@ const useMap = () => {
     throw new Error("useMap must be used within <MapProvider />");
   }
 
-  const { getMap } = ctx;
+  const { mapInstance, mapLayers } = ctx;
 
-  return { getMap };
+  return { mapInstance, mapLayers };
 };
 
 export { useMap };

@@ -4,6 +4,7 @@ import VectorSource from "ol/source/Vector";
 import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
 import Style from "ol/style/Style";
+import { LAYERS } from "../../core/constants";
 
 const VOIVODESHIPS_GEOJSON_URL = "/wojewodztwa.geojson";
 
@@ -27,6 +28,7 @@ function createVoivodeshipsLayer() {
         color: "rgba(51, 136, 255, 0.1)",
       }),
     }),
+    properties: LAYERS.voivodeships,
   });
 }
 

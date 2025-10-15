@@ -2,11 +2,7 @@ import { Feature, Map as OpenLayersMap, View } from "ol";
 import { Polygon } from "ol/geom";
 import { fromLonLat, transformExtent } from "ol/proj";
 
-import {
-  createMaskLayer,
-  createOsmLayer,
-  createVoivodeshipsLayer,
-} from "../layers";
+import { createMaskLayer, createOsmLayer, createVoivodeshipsLayer } from "../layers";
 import { setupProj4 } from "../utils/setupProj4";
 import { createWorldPolygon } from "../utils/createWorldPolygon";
 import { mergeFeatureGeometries } from "../utils/mergeFeatureGeometries";
@@ -26,23 +22,16 @@ function createMap({ element }: { element: HTMLDivElement }) {
 
   const map = new OpenLayersMap({
     target: element,
-    layers: [osmLayer, maskLayer, voivodeshipsLayer],
+    layers: [osmLayer, voivodeshipsLayer, maskLayer],
     view,
     controls: [],
     interactions: [],
   });
 
   map.once("postrender", () => {
-    view.fit(
-      transformExtent(
-        COORDINATES_EPSG_4326.POLAND_BBOX,
-        "EPSG:4326",
-        "EPSG:3857"
-      ),
-      {
-        padding: [24, 24, 24, 24],
-      }
-    );
+    view.fit(transformExtent(COORDINATES_EPSG_4326.POLAND_BBOX, "EPSG:4326", "EPSG:3857"), {
+      padding: [24, 256, 24, 24],
+    });
   });
 
   const voivodeshipsSource = voivodeshipsLayer.getSource();

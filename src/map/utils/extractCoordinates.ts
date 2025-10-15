@@ -1,4 +1,5 @@
 import type { Geometry, MultiPolygon, Polygon } from "ol/geom";
+import type { PolygonCoordinates } from "../core/types";
 
 function isPolygon(geometry: Geometry): geometry is Polygon {
   return geometry.getType() === "Polygon";
@@ -11,13 +12,13 @@ function isMultiPolygon(geometry: Geometry): geometry is MultiPolygon {
 /**
  * Extracts coordinates as a flat list of linear rings.
  *
- * Return type: number[][][]
- *   - Level 1: LinearRing[] - a list of rings.
- *   - Level 2: Coordinate[] - the vertices of a single ring.
- *   - Level 3: number[] - a single coordinate tuple
+ * Return type: PolygonCoordinates -> number[][][]
+ *   - Level 1: Array<LinearRing> - a list of rings.
+ *   - Level 2: Array<Coordinate> - the vertices of a single ring.
+ *   - Level 3: Array<number> - a single coordinate tuple
  */
-function extractCoordinates(geometry: Geometry): number[][][] {
-  const coordinates: number[][][] = [];
+function extractCoordinates(geometry: Geometry): PolygonCoordinates {
+  const coordinates: PolygonCoordinates = [];
 
   if (isPolygon(geometry)) {
     coordinates.push(...geometry.getCoordinates());

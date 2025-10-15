@@ -1,0 +1,28 @@
+.sidebar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
+  width: 256px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  margin: 0 0 16px 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.item {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  color: #333;
+}
