@@ -16,6 +16,10 @@ const LAYERS = {
     id: "mask",
     title: "Mask",
   },
+  lines: {
+    id: "lines",
+    title: "Linie (GeoJSON)",
+  },
 } as const;
 
 export { COORDINATES_EPSG_4326, LAYERS };

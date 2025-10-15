@@ -19,8 +19,9 @@ const MapComponent: React.FC = () => {
     <div
       ref={ref}
       style={{
-        width: "100%",
+        width: "calc(100% + 300px)",
         height: "100%",
+        marginLeft: "-300px",
       }}
     />
   );

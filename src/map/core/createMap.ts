@@ -7,17 +7,26 @@ import { setupProj4 } from "../utils/setupProj4";
 import { createWorldPolygon } from "../utils/createWorldPolygon";
 import { mergeFeatureGeometries } from "../utils/mergeFeatureGeometries";
 import { COORDINATES_EPSG_4326 } from "./constants";
+import { createLinesLayer } from "../layers/linesLayer";
 
 setupProj4();
+
+const MAP_EXTENT = transformExtent(COORDINATES_EPSG_4326.POLAND_BBOX, "EPSG:4326", "EPSG:3857");
 
 function createMap({ element }: { element: HTMLDivElement }) {
   const osmLayer = createOsmLayer();
   const voivodeshipsLayer = createVoivodeshipsLayer();
   const maskLayer = createMaskLayer();
+  const linesLayer = createLinesLayer();
 
   const view = new View({
     center: fromLonLat(COORDINATES_EPSG_4326.POLAND_CENTER),
-    zoom: 6,
+    extent: MAP_EXTENT,
+    zoom: 2,
+    showFullExtent: true,
+    padding: [100, 0, 0, 0],
+    smoothExtentConstraint: false,
+    smoothResolutionConstraint: false,
   });
 
   const map = new OpenLayersMap({
@@ -26,16 +35,10 @@ function createMap({ element }: { element: HTMLDivElement }) {
       osmLayer,
       maskLayer,
       voivodeshipsLayer, // Voivodeships over mask to display country borders stroke
+      linesLayer,
     ],
     view,
     controls: [],
-    interactions: [],
-  });
-
-  map.once("postrender", () => {
-    view.fit(transformExtent(COORDINATES_EPSG_4326.POLAND_BBOX, "EPSG:4326", "EPSG:3857"), {
-      padding: [24, 256, 24, 24],
-    });
   });
 
   const voivodeshipsSource = voivodeshipsLayer.getSource();
