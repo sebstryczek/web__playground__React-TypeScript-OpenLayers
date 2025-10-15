@@ -1,13 +1,6 @@
-import type { Geometry, MultiPolygon, Polygon } from "ol/geom";
+import type { Geometry } from "ol/geom";
 import type { PolygonCoordinates } from "../core/types";
-
-function isPolygon(geometry: Geometry): geometry is Polygon {
-  return geometry.getType() === "Polygon";
-}
-
-function isMultiPolygon(geometry: Geometry): geometry is MultiPolygon {
-  return geometry.getType() === "MultiPolygon";
-}
+import { isMultiPolygon, isPolygon } from "../core/typeGuards";
 
 /**
  * Extracts coordinates as a flat list of linear rings.

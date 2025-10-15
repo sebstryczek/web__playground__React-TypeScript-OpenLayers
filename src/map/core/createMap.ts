@@ -22,7 +22,11 @@ function createMap({ element }: { element: HTMLDivElement }) {
 
   const map = new OpenLayersMap({
     target: element,
-    layers: [osmLayer, voivodeshipsLayer, maskLayer],
+    layers: [
+      osmLayer,
+      maskLayer,
+      voivodeshipsLayer, // Voivodeships over mask to display country borders stroke
+    ],
     view,
     controls: [],
     interactions: [],

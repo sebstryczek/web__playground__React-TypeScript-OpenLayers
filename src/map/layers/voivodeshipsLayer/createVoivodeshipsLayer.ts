@@ -1,10 +1,9 @@
 import GeoJSON from "ol/format/GeoJSON";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import Fill from "ol/style/Fill";
-import Stroke from "ol/style/Stroke";
-import Style from "ol/style/Style";
-import { LAYERS } from "../../core/constants";
+
+import { LAYERS } from "@/map/core/constants";
+import { createStyles } from "./createStyles";
 
 const VOIVODESHIPS_GEOJSON_URL = "/wojewodztwa.geojson";
 
@@ -19,16 +18,8 @@ function createVoivodeshipsLayer() {
 
   return new VectorLayer({
     source,
-    style: new Style({
-      stroke: new Stroke({
-        color: "#3388ff",
-        width: 2,
-      }),
-      fill: new Fill({
-        color: "rgba(51, 136, 255, 0.1)",
-      }),
-    }),
     properties: LAYERS.voivodeships,
+    style: createStyles(),
   });
 }
 
